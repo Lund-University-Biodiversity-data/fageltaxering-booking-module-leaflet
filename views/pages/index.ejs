@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+
+
+</head>
+
+<header>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="css/map.css">
+
+
+  <!-- LEAFLET -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+     integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+     crossorigin=""/> 
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+
+  <!-- LEAFLET draw -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+
+  <!-- end LEAFLET -->
+
+
+  <script src="js/map.js"></script>
+
+</header>
+
+
+<body>
+
+<main>
+
+  <div class="container">
+
+
+    <div class="">
+      <div class="form-group mb-3" id="mapSection">
+        <h4>Kartan</h4>
+        <div id="map"></div>
+      </div>
+
+    </div>
+
+  </div> <!-- end container -->
+</main>
+
+</body>
+
+
+<footer class="footer">
+  <%- include('../partials/footer'); %>
+</footer>
+
+</html>
