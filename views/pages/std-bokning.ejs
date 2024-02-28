@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head'); %>
+
+<%- include('../partials/header'); %>
+
+
+
+
+<body>
+
+<main>
+
+  <div class="container">
+
+    <div class="">
+      <div class="form-group mb-3" id="mapSection">
+        <h3>Standardrutternas läge och bokningsstatus </h3>
+
+        <p>Idag har bokningen av standardrutterna 2024 dragit igång. De inventerare som inventerade förra året har blivit tillfrågade om de vill inventera&nbsp;igen, De har förtur till de rutter de gjorde 2023, men det går&nbsp;utmärkt för andra att anmäla sitt intresse redan nu.</p>
+        <p>En beskrivning&nbsp;av&nbsp;delprogrammet&nbsp;finns&nbsp;<a href="http://www.fageltaxering.lu.se/inventera/metoder/standardrutter">här</a>&nbsp;och en&nbsp;karta över Sveriges 716 standardrutter&nbsp;finns <a href="http://Standardrutternas läge och bokningsstatus | Svensk Fågeltaxering">här</a>. Gröna cirklar&nbsp;på kartan är rutter som bokats och vita cirklar&nbsp;är obokade rutter. Sök efter obokade rutter&nbsp;och anmäl&nbsp;sedan ditt intresse genom att skriva ett mail till oss på <a href="http://fageltaxering@biol.lu.se">fageltaxering@biol.lu.se</a>.&nbsp;</p>
+
+
+        <div id="map"></div>
+      </div>
+
+    </div>
+    <div id="listSitesHidden" style="display:none"><%= listSites %></div>
+
+  </div> <!-- end container -->
+</main>
+
+</body>
+
+
+<%- include('../partials/footer'); %>
+
+</html>

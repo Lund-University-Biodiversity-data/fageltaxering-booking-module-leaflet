@@ -59,10 +59,16 @@ https.get('https://canmove-app.ekol.lu.se/sft/booking2.php', (resp) => {
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
+
+app.get('/', (req, res) =>  {
+  res.send('Testing page for new fageltaxering webpage with booking map. Check the pages std-bokning and std-natt')
+
+})
+
+app.get('/std-bokning', (req, res) => {
   //res.send('Testing page for new fageltaxering webpage with booking map.')
 
-  res.render('pages/index', {
+  res.render('pages/std-bokning', {
     listSites: listSites
   });
 
@@ -70,7 +76,9 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`App http://localhost:${port}`);
+  console.log(`App launched at http://localhost:${port}`);
+  console.log(`Standardrutternas bokning sida at http://localhost:${port}/std-bokning`);
+  console.log(`Nattrutternas bokning sida at http://localhost:${port}/std-natt`);
 
   app.use(express.static(__dirname + '/public'));
 
