@@ -24,14 +24,28 @@ $(document).ready(function () {
   });
 
   var listSites=JSON.parse(decodeURIComponent($("#listSitesHidden").html()));
+  var surveyName=$("#surveyName").html();
 
   listSites.forEach((site) => {
+
+    var iconName='';
+    var siteDisplay='';
+
     if (site.Status== 'JA') {
-      L.marker([site.WGS84_lat, site.WGS84_lon], {icon: bookedIcon}).addTo(map).bindPopup("02C7H");
+      iconName=bookedIcon;
     }
     else {
-      L.marker([site.WGS84_lat, site.WGS84_lon], {icon: notbookedIcon}).addTo(map).bindPopup("02C7H");
+      iconName=notbookedIcon;
     }
+
+    if (surveyName == 'std') {
+      siteDisplay=site.Kartblad + ' - ' + site.Namn;
+    }
+    else { // natt
+      siteDisplay=site.Namn;
+    }
+    L.marker([site.WGS84_lat, site.WGS84_lon], {icon: iconName}).addTo(map).bindPopup(siteDisplay);
+
   })
 });
 

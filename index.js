@@ -94,19 +94,21 @@ app.get('/', (req, res) =>  {
 
 app.get('/std-bokning', (req, res) => {
   res.render('pages/std-bokning', {
-    listSites: listSitesStd
+    listSites: listSitesStd,
+    surveyName: 'std' 
   });
 })
 app.get('/natt-bokning', (req, res) => {
   res.render('pages/natt-bokning', {
-    listSites: listSitesNatt
+    listSites: listSitesNatt,
+    surveyName: 'natt'
   });
 })
 
 app.listen(port, () => {
   console.log(`App launched at http://localhost:${port}`);
   console.log(`Standardrutternas bokning sida at http://localhost:${port}/std-bokning`);
-  console.log(`Nattrutternas bokning sida at http://localhost:${port}/std-natt`);
+  console.log(`Nattrutternas bokning sida at http://localhost:${port}/natt-bokning`);
 
   app.use(express.static(__dirname + '/public'));
 })
