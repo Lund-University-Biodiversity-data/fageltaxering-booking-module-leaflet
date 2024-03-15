@@ -8,9 +8,6 @@ const https = require('https');
 const UrlStd='https://canmove-app.ekol.lu.se/sft/booking2.php';
 const urlNatt='https://canmove-app.ekol.lu.se/sft/booking2.php?t=n';
 
-var listSitesStd = [];
-var listSitesNatt = [];
-
 /*
 examples for test without WS
 var listSites = [
@@ -44,45 +41,8 @@ var listSites = [
 ];
 */
 
-// fetch the booking data for STD
-https.get(UrlStd, (resp) => {
 
-  let data = '';
 
-  // A chunk of data has been received.
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
-
-  // The whole response has been received. Print out the result.
-  resp.on('end', () => {
-    //console.log(data);
-    listSitesStd=data;
-  });
-  
-}).on("error", (err) => {
-    console.log("Error: " + err.message);
-});
-
-// fetch the booking data for STD
-https.get(urlNatt, (resp) => {
-
-  let data = '';
-
-  // A chunk of data has been received.
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
-
-  // The whole response has been received. Print out the result.
-  resp.on('end', () => {
-    //console.log(data);
-    listSitesNatt=data;
-  });
-  
-}).on("error", (err) => {
-    console.log("Error: " + err.message);
-});
 
 app.set('view engine', 'ejs');
 
@@ -93,16 +53,67 @@ app.get('/', (req, res) =>  {
 })
 
 app.get('/std-bokning', (req, res) => {
-  res.render('pages/std-bokning', {
-    listSites: listSitesStd,
-    surveyName: 'std' 
+
+  var listSitesStd = [];
+
+  // fetch the booking data for STD
+  https.get(UrlStd, (resp) => {
+
+    let data = '';
+
+    // A chunk of data has been received.
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+
+      listSitesStd=data;
+
+      res.render('pages/std-bokning', {
+        listSites: listSitesStd,
+        surveyName: 'std' 
+      });
+    });
+    
+  }).on("error", (err) => {
+      console.log("Error: " + err.message);
   });
+
 })
+
+
 app.get('/natt-bokning', (req, res) => {
-  res.render('pages/natt-bokning', {
-    listSites: listSitesNatt,
-    surveyName: 'natt'
+
+  var listSitesNatt = [];
+
+  // fetch the booking data for NATT
+  https.get(urlNatt, (resp) => {
+
+    let data = '';
+
+    // A chunk of data has been received.
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+      
+      listSitesNatt=data;
+
+      res.render('pages/natt-bokning', {
+        listSites: listSitesNatt,
+        surveyName: 'natt'
+      });
+    });
+    
+  }).on("error", (err) => {
+      console.log("Error: " + err.message);
   });
+
+
 })
 
 app.listen(port, () => {
