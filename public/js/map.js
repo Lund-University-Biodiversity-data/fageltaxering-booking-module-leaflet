@@ -31,7 +31,7 @@ $(document).ready(function () {
     var iconName='';
     var siteDisplay='';
 
-    if (site.Status== 'JA') {
+    if (site.status== 'JA') {
       iconName=bookedIcon;
     }
     else {
